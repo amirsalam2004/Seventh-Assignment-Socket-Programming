@@ -34,8 +34,8 @@ public class ClientHandler implements Runnable {
                         out.writeUTF(messages);
                         out.flush();
                     }
-                    // SF -> See Files
-                    if (request.startsWith("SF")){
+                    // F -> See Files
+                    if (request.startsWith("F")){
                         out.writeUTF(getFileNames());
                     }
                     // D -> Download

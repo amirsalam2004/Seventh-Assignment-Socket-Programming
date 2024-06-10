@@ -19,7 +19,7 @@ public class Client {
             Object s=JOptionPane.showInputDialog(null,"Choose an option",
                     "Information Options",JOptionPane.INFORMATION_MESSAGE,null,options,options[0]);
             String selection=s.toString();
-            if(s.equals("See chat and Send message")){
+            if(selection.equals("See chat and Send message")){
                 try {
                     //R -> Read
                     out.writeUTF("R ");
@@ -34,15 +34,15 @@ public class Client {
                     closeAll(in,out,client);
                 }
             }
-            if(s.equals("Download file")){
+            if(selection.equals("Download file")){
                 try {
-                    out.writeUTF("SF ");
+                    out.writeUTF("F ");
                     out.flush();
                     String[] Names = in.readUTF().split("@", 0);
                     Object[] ops = Names;
                     Object o = JOptionPane.showInputDialog(null, "Choose an file",
-                            "SELECT FILE", JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-                    String fileName = s.toString();
+                            "SELECT FILE", JOptionPane.INFORMATION_MESSAGE, null, ops, ops[0]);
+                    String fileName = o.toString();
                     out.writeUTF("D " + fileName);
                     downloadFile(in, out, client, fileName);
                 }
@@ -50,7 +50,7 @@ public class Client {
                     closeAll(in,out,client);
                 }
             }
-            if(s.equals(("Exit"))){
+            if(selection.equals(("Exit"))){
                 out.writeUTF("E ");
                 closeAll(in,out,client);
                 break;
